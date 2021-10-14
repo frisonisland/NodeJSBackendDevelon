@@ -1,0 +1,106 @@
+---
+swagger: "2.0"
+info:
+  description: "Test"
+  version: "1.0.0"
+  title: "Test"
+  contact:
+    email: "frisonisland@gmail.com"
+host: "localhost"
+basePath: "/api/v2"
+schemes:
+- "https"
+- "http"
+paths:
+  /upperCase:
+    post:
+      tags:
+      - "API"
+      summary: "Uppercase firstname and lastname"
+      operationId: "upperCaseFirstlastName"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/FirstLastName"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FirstLastName"
+      x-swagger-router-controller: "API"
+  /sumArray:
+    post:
+      tags:
+      - "API"
+      summary: "Returns the sum of all numbers"
+      operationId: "sumArray"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/NumberArray"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Sum"
+      x-swagger-router-controller: "API"
+  /removeDuplicates:
+    post:
+      tags:
+      - "API"
+      summary: "Returns the same array without duplicates"
+      operationId: "removeDuplicates"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/StringArray"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Sum"
+      x-swagger-router-controller: "API"
+definitions:
+  FirstLastName:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+    example:
+      firstName: "firstName"
+      lastName: "lastName"
+  NumberArray:
+    type: "object"
+    properties:
+      numbers:
+        type: "array"
+        items:
+          type: "number"
+  Sum:
+    type: "object"
+    properties:
+      result:
+        type: "number"
+    example:
+      result: 0.80082819046101150206595775671303272247314453125
+  StringArray:
+    type: "object"
+    properties:
+      values:
+        type: "array"
+        items:
+          type: "string"
